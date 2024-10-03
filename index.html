@@ -23,10 +23,13 @@
             position: relative;
         }
 
-    .grid div.selected {
-  position: absolute; /* Абсолютное позиционирование выделенного элемента */
-  z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
-  outline: 7px solid blue;
+  .grid div.selected {
+ /* Убираем абсолютное позиционирование */
+ /* position: absolute; */
+ z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
+ outline: 7px solid blue;
+ /* Добавляем плавную анимацию */
+ transition: outline-color 0.3s ease-in-out; /* Анимация изменения цвета рамки */
 }
 
 
