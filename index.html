@@ -12,7 +12,7 @@
             width: 310px;
             margin: auto;
         }
-
+        
         .grid div {
             width: 100px;
             height: 100px;
@@ -20,19 +20,20 @@
             cursor: pointer;
             border: 2px solid #ccc;
             transition: border 0.2s;
-            position: relative; /* Добавлено чтобы использовать псевдоэлемент */
+            position: relative;
         }
-
+        
         .grid div.selected::after {
-            content: '✓';
-            font-size: 24px;
-            color: green;
+            content: '';
+            background-image: url('https://i.postimg.cc/RFsLDmv9/image.png'); /* Замените на нужную ссылку */
+            background-size: 24px 24px;
+            width: 24px;
+            height: 24px;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 5px;
+            right: 5px;
         }
-
+        
         .instructions {
             text-align: center;
             margin-bottom: 10px;
