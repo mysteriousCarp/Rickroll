@@ -20,6 +20,10 @@
             cursor: pointer;
             border: 1px solid #ccc;
             transition: border 0.2s;
+             z-index: 9; /* Высокое значение, чтобы элемент был выше остальных */
+ outline: 0px solid blue;
+ /* Добавляем плавную анимацию */
+ transition: outline-width 0.3s ease, outline-offset 0.3s ease;
             position: relative;
         }
 
