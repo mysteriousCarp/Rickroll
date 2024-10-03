@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шуточная капча</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            width: 310px; /* Добавлено для учета отступов */
+            margin: auto;
+        }
+
+        .grid div {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #ccc; /* Граница для разделения */
+            transition: border 0.2s;
+        }
+
+        .grid div.selected {
+            border: 2px solid blue;
+        }
+
+        .instructions {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">Выберите все изображения, чтобы пройти проверку</div>
+    <div class="grid" id="captchaGrid">
+        <!-- Images will be dynamically inserted here -->
+    </div>
+    <script>
+        const referenceImage = 'https://i.postimg.cc/NFscG1XB/image.jpg'; // URL вашего изображения
+        const gridSize = 3;
+        const tileSize = 100; // Сторона квадрата
+
+        function createCaptcha() {
+            const grid = document.getElementById('captchaGrid');
+
+            for (let y = 0; y < gridSize; y++) {
+                for (let x = 0; x < gridSize; x++) {
+                    const div = document.createElement('div');
+                    div.style.backgroundImage = `url(${referenceImage})`;
+                    div.style.backgroundPosition = `-${x * tileSize}px -${y * tileSize}px`;
+                    div.style.backgroundSize = `${gridSize * tileSize}px`;
+
+                    div.addEventListener('click', () => {
+                        div.classList.toggle('selected');
+                    });
+
+                    grid.appendChild(div);
+                }
+            }
+        }
+
+        window.onload = createCaptcha;
+    </script>
+</body>
+</html>
+
