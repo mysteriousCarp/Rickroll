@@ -5,63 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Шуточная капча</title>
     <style>
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0px;
-            width: 310px;
-            margin: auto;
-        }
-        
-        .grid div {
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            transition: border 0.2s;
-             z-index: 9; /* Высокое значение, чтобы элемент был выше остальных */
- outline: 0px solid blue;
- /* Добавляем плавную анимацию */
- transition: outline-width 0.3s ease, outline-offset 0.3s ease;
-            position: relative;
-        }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0px;
+        width: 310px;
+        margin: auto;
+    }
 
-  .grid div.selected {
- /* Убираем абсолютное позиционирование */
- /* position: absolute; */
- z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
- outline: 7px solid blue;
- /* Добавляем плавную анимацию */
- transition: outline-width 0.3s ease, outline-offset 0.3s ease; /* Анимация изменения цвета рамки */
-}
-        .grid:not(:div.selected) {
- z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
- outline: none; 
- /* Добавляем плавную анимацию */
- transition: outline-width 0.3s ease, outline-offset 0.3s ease;
-}
+    .grid div {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        transition: border 0.2s;
+        z-index: 9; /* Высокое значение, чтобы элемент был выше остальных */
+        outline: 0px solid blue;
+        /* Добавляем плавную анимацию */
+        transition: outline-width 0.3s ease, outline-offset 0.3s ease;
+        position: relative;
+    }
 
+    .grid div.selected {
+        /* Убираем абсолютное позиционирование */
+        /* position: absolute; */
+        z-index: 1000; /* Высокое значение, чтобы элемент был выше остальных */
+        outline: 7px solid blue;
+        /* Добавляем плавную анимацию */
+        transition: outline-width 0.3s ease, outline-offset 0.3s ease; /* Анимация изменения цвета рамки */
+    }
 
+    /* Добавляем класс для временного увеличения z-index */
+    .grid div.selected.unselected {
+        z-index: 1000; /* Временное увеличение z-index */
+        transition: z-index 0.3s ease; /* Анимация изменения z-index */
+    }
 
-        
-        
-        .grid div.selected::after {
-            content: '';
-            background-image: url('https://i.postimg.cc/RFsLDmv9/image.png'); /* Замените на нужную ссылку */
-            background-size: 24px 24px;
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            top: 5px;
-            right: 5px;
-        }
-        
-        .instructions {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-    </style>
+    /* Стили для состояния, когда выделение снято */
+    .grid div.selected.unselected::after {
+        content: '';
+        background-image: url('https://i.postimg.cc/RFsLDmv9/image.png'); /* Замените на нужную ссылку */
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        opacity: 0; /* Делаем изображение невидимым */
+        transition: opacity 0.3s ease; /* Анимация изменения прозрачности */
+    }
+
+    /* Стили для состояния, когда выделение снято и время задержки прошло */
+    .grid div.selected.unselected.fade-out::after {
+        opacity: 1; /* Делаем изображение видимым */
+    }
+
+    .grid div.unselected {
+        /* Возвращаем z-index в исходное состояние */
+        z-index: 1000;
+        outline: none;
+        /* Добавляем плавную анимацию */
+        transition: outline-width 0.3s ease, outline-offset 0.3s ease;
+    }
+
+    .grid div:not(:div.selected) {
+        z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
+        outline: none;
+        /* Добавляем плавную анимацию */
+        transition: outline-width 0.3s ease, outline-offset 0.3s ease;
+    }
+
+    .grid div.selected::after {
+        content: '';
+        background-image: url('https://i.postimg.cc/RFsLDmv9/image.png'); /* Замените на нужную ссылку */
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .instructions {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+</style>
 </head>
 <body>
     <div class="instructions">Выберите все изображения, чтобы пройти проверку</div>
