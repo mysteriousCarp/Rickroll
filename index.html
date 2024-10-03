@@ -27,13 +27,13 @@
  /* Убираем абсолютное позиционирование */
  /* position: absolute; */
  z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
- inline: 7px solid blue;
+ outline: 7px solid blue;
  /* Добавляем плавную анимацию */
  transition: outline-width 0.3s ease, outline-offset 0.3s ease; /* Анимация изменения цвета рамки */
 }
         .grid:not(:div.selected) {
  z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
- inline: none; 
+ outline: none; 
  /* Добавляем плавную анимацию */
  transition: outline-width 0.3s ease, outline-offset 0.3s ease;
 }
