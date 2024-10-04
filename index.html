@@ -46,25 +46,7 @@
         transition: opacity 0.3s ease; /* Анимация изменения прозрачности */
     }
 
-    /* Стили для состояния, когда выделение снято и время задержки прошло */
-    .grid div.selected.unselected.fade-out::after {
-        opacity: 1; /* Делаем изображение видимым */
-    }
-
-    .grid div.unselected {
-        /* Возвращаем z-index в исходное состояние */
-        z-index: 1000;
-        outline: none;
-        /* Добавляем плавную анимацию */
-        transition: outline-width 0.3s ease, outline-offset 0.3s ease;
-    }
-
-    .grid div:not(:div.selected) {
-        z-index: 10; /* Высокое значение, чтобы элемент был выше остальных */
-        outline: none;
-        /* Добавляем плавную анимацию */
-        transition: outline-width 0.3s ease, outline-offset 0.3s ease;
-    }
+   
 
     .grid div.selected::after {
         content: '';
