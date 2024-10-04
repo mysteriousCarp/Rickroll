@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Шуточная капча</title>
-    <style>
+   <style>
     .grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -13,7 +13,7 @@
     }
 
       .grid div {
-            width: 100px;
+            border: 1px solid white;width: 100px;
             height: 100px;
             cursor: pointer;
             box-sizing: border-box; /* Чтобы border учитывался в размерах элемента */
@@ -21,8 +21,8 @@
         }
 
         .grid div.selected {
-            border: 10px solid white;
-            transform: scale(0.9); /* Уменьшаем изображение */
+            border: 5px solid white;
+            transform: scale(0.95); /* Уменьшаем изображение */
         }
 
     /* Добавляем класс для временного увеличения z-index */
